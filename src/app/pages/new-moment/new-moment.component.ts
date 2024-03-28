@@ -9,7 +9,12 @@ export class NewMomentComponent implements OnInit {
   btnText = "Compartilhar!";
   constructor() { }
 
+
   ngOnInit(): void {
+  }
+
+  createHandler(event: any): void {
+    console.log("Funfou");
   }
 
 }
