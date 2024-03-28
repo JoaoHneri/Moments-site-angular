@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Moment } from '../interfaces/Moments';
 import { environment } from 'src/environments/environment';
 import { Form } from '@angular/forms';
+import { Response } from '../interfaces/Response';
 
 @Injectable({providedIn: 'root'})
 
@@ -12,6 +13,11 @@ export class MomentService {
   private apiUrl = `${this.baseApiUrl}api/moments`;
 
   constructor(private httpClient: HttpClient) { }
+
+  //RESPOSTA (RESPONSE) QUE VAI CONTER UM ARRAY DE MOMENTS( MOMENT[]);
+  getMoments(): Observable<Response<Moment[]>> {
+    return this.httpClient.get<Response<Moment[]>>(this.apiUrl);
+  }
   
   createMoment(formData: FormData): Observable<FormData>{
     return this.httpClient.post<FormData>(this.apiUrl, formData);
